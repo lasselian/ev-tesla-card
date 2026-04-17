@@ -1,6 +1,7 @@
 # EV Tesla Card
 
-A sleek Home Assistant Lovelace card for displaying Tesla vehicle status.
+<img width="516" height="468" alt="image" src="https://github.com/user-attachments/assets/96bfdd0a-eebd-4505-8a0a-420fe78ca1d4" />
+
 
 ## Features
 
