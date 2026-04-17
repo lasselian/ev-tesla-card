@@ -1,5 +1,6 @@
 {
   "name": "EV Tesla Card",
+  "type": "plugin",
   "render_readme": true,
   "filename": "ev-tesla-card.js"
 }
