@@ -185,7 +185,7 @@ const w=globalThis,A=t=>t,E=w.trustedTypes,S=E?E.createPolicy("lit-html",{create
       transparent 100%
     );
     background-size: 300px 100%;
-    animation: shimmer 3.5s linear infinite;
+    animation: shimmer 5s linear infinite;
   }
 
   /* charging glow on bar */
@@ -243,7 +243,7 @@ const w=globalThis,A=t=>t,E=w.trustedTypes,S=E?E.createPolicy("lit-html",{create
   }
 
   .charging-indicator ha-icon {
-    animation: chargePulse 2s ease-in-out infinite;
+    animation: chargePulse 3s ease-in-out infinite;
     filter: drop-shadow(0 0 4px var(--accent-start));
   }
 
@@ -355,7 +355,7 @@ const w=globalThis,A=t=>t,E=w.trustedTypes,S=E?E.createPolicy("lit-html",{create
     0%, 100% { box-shadow: 0 0 8px rgba(48, 209, 88, 0.08); }
     50%       { box-shadow: 0 0 16px rgba(48, 209, 88, 0.25); }
   }
-`;const _TM={m3:{l:"Model 3",years:[{y:"2023+ (Highland)",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMSG",l:"Stealth Grey"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPUR",l:"Ultra Red"}],wheels:[{v:"W40B",l:'18" Photon'},{v:"WY19B",l:'19" Nova'}]},{y:"2017\u20132022",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"}],wheels:[{v:"W38B",l:'18" Aero'},{v:"WY19B",l:'19" Sport'}]}]},my:{l:"Model Y",years:[{y:"2024+ (Juniper)",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPUR",l:"Ultra Red"},{v:"PMSG",l:"Stealth Grey"}],wheels:[{v:"WY19B",l:'19" Gemini'},{v:"WY20P",l:'20" Induction'}]},{y:"2020\u20132023",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"}],wheels:[{v:"WY19B",l:'19" Gemini'},{v:"WY20P",l:'20" Induction'}]}]},ms:{l:"Model S",years:[{y:"2021+",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"},{v:"PMSG",l:"Stealth Grey"}],wheels:[]},{y:"2012\u20132020",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"}],wheels:[]}]},mx:{l:"Model X",years:[{y:"2021+",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"},{v:"PMSG",l:"Stealth Grey"}],wheels:[]},{y:"2015\u20132020",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"}],wheels:[]}]}};class pt extends ct{static properties={_config:{state:!0},_hass:{state:!0},_tsModel:{state:!0},_tsYear:{state:!0},_tsColor:{state:!0},_tsWheel:{state:!0}};static styles=n`
+`;const _TM={m3:{l:"Model 3",years:[{y:"2023+ (Highland)",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMSG",l:"Stealth Grey"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPUR",l:"Ultra Red"}],wheels:[{v:"W40B",l:'18" Photon'},{v:"WY19B",l:'19" Nova'}]},{y:"2017\u20132022",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"}],wheels:[{v:"W38B",l:'18" Aero'},{v:"WY19B",l:'19" Sport'}]}]},my:{l:"Model Y",years:[{y:"2024+ (Juniper)",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPUR",l:"Ultra Red"},{v:"PMSG",l:"Stealth Grey"}],wheels:[{v:"WY19B",l:'19" Gemini'},{v:"WY20P",l:'20" Induction'}]},{y:"2020\u20132023",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"}],wheels:[{v:"WY19B",l:'19" Gemini'},{v:"WY20P",l:'20" Induction'}]}]},ms:{l:"Model S",years:[{y:"2021+",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"},{v:"PMSG",l:"Stealth Grey"}],wheels:[{v:"WS90",l:'19" Tempest'},{v:"WS10",l:'21" Arachnid'}]},{y:"2012\u20132020",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"}],wheels:[{v:"WTAS",l:'19" Slipstream'},{v:"WTSG",l:'21" Turbine'}]}]},mx:{l:"Model X",years:[{y:"2021+",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"},{v:"PMSG",l:"Stealth Grey"}],wheels:[{v:"WX00",l:'20" Cyberstream'},{v:"WX20",l:'22" Turbine'}]},{y:"2015\u20132020",colors:[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"}],wheels:[{v:"WT20",l:'20" Slipstream'},{v:"WT22",l:'22" Turbine'}]}]}};class pt extends ct{static properties={_config:{state:!0},_hass:{state:!0},_tsModel:{state:!0},_tsYear:{state:!0},_tsColor:{state:!0},_tsWheel:{state:!0}};static styles=n`
     :host { display: block; }
 
     ha-textfield,
