@@ -181,11 +181,11 @@ const w=globalThis,A=t=>t,E=w.trustedTypes,S=E?E.createPolicy("lit-html",{create
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.45) 50%,
+      rgba(255, 255, 255, 0.28) 50%,
       transparent 100%
     );
-    background-size: 50px 100%;
-    animation: shimmer 1.5s linear infinite;
+    background-size: 300px 100%;
+    animation: shimmer 3.5s linear infinite;
   }
 
   /* charging glow on bar */
@@ -337,8 +337,8 @@ const w=globalThis,A=t=>t,E=w.trustedTypes,S=E?E.createPolicy("lit-html",{create
   }
 
   @keyframes shimmer {
-    from { background-position: -50px 0; }
-    to   { background-position: 200px 0; }
+    from { background-position: -300px 0; }
+    to   { background-position: 600px 0; }
   }
 
   @keyframes chargePulse {
@@ -355,7 +355,7 @@ const w=globalThis,A=t=>t,E=w.trustedTypes,S=E?E.createPolicy("lit-html",{create
     0%, 100% { box-shadow: 0 0 8px rgba(48, 209, 88, 0.08); }
     50%       { box-shadow: 0 0 16px rgba(48, 209, 88, 0.25); }
   }
-`;class pt extends ct{static properties={_config:{state:!0},_hass:{state:!0}};static styles=n`
+`;const _TM={m3:{l:"Model 3",w:[{v:"W40B",l:'18" Photon'},{v:"WY19B",l:'19" Nova'}]},my:{l:"Model Y",w:[{v:"WY19B",l:'19" Gemini'},{v:"WY20P",l:'20" Induction'}]},ms:{l:"Model S",w:[{v:"W32D",l:'19" Tempest'},{v:"WT22P",l:'21" Arachnid'}]},mx:{l:"Model X",w:[{v:"W32D",l:'20" Cyberstream'},{v:"WT22P",l:'22" Turbine'}]},ct:{l:"Cybertruck",w:[{v:"WTAB",l:"Standard"},{v:"WTA20B",l:'20" Range'}]}};const _TC=[{v:"PPSW",l:"Pearl White"},{v:"PPB1",l:"Solid Black"},{v:"PMNG",l:"Midnight Silver"},{v:"PPSB",l:"Deep Blue Metallic"},{v:"PPMR",l:"Multi-Coat Red"},{v:"PMDY",l:"Quicksilver"}];class pt extends ct{static properties={_config:{state:!0},_hass:{state:!0},_tsModel:{state:!0},_tsColor:{state:!0},_tsWheel:{state:!0}};static styles=n`
     :host { display: block; }
 
     ha-textfield,
@@ -398,7 +398,13 @@ const w=globalThis,A=t=>t,E=w.trustedTypes,S=E?E.createPolicy("lit-html",{create
       text-decoration: underline;
     }
     .clear-btn:hover { color: var(--primary-text-color); }
-  `;constructor(){super(),this._config={}}set hass(t){this._hass=t}setConfig(t){this._config={...t}}_fire(){this.dispatchEvent(new CustomEvent("config-changed",{detail:{config:{...this._config}},bubbles:!0,composed:!0}))}_set(t,e){if(""===e||null==e){const e={...this._config};delete e[t],this._config=e}else this._config={...this._config,[t]:e};this._fire()}_entitySelector(t,e,i){const s=i?{entity:{domain:i}}:{entity:{}};return V`
+
+    mwc-button {
+      display: block;
+      width: 100%;
+      margin-top: 4px;
+    }
+  `;constructor(){super(),this._config={},this._tsModel="",this._tsColor="PPSW",this._tsWheel=""}set hass(t){this._hass=t}setConfig(t){this._config={...t}}_fire(){this.dispatchEvent(new CustomEvent("config-changed",{detail:{config:{...this._config}},bubbles:!0,composed:!0}))}_set(t,e){if(""===e||null==e){const e={...this._config};delete e[t],this._config=e}else this._config={...this._config,[t]:e};this._fire()}_buildTeslaUrl(){const m=this._tsModel,c=this._tsColor,w=this._tsWheel;if(!m||!c||!w)return null;return`https://static-assets.tesla.com/v1/compositor/?model=${m}&view=STUD_3QTR&size=1440&options=$${c},$${w}&bkba_opt=1`}_entitySelector(t,e,i){const s=i?{entity:{domain:i}}:{entity:{}};return V`
       <ha-selector
         .hass=${this._hass}
         .selector=${s}
@@ -452,7 +458,37 @@ const w=globalThis,A=t=>t,E=w.trustedTypes,S=E?E.createPolicy("lit-html",{create
           Clear image URL
         </button>
       `:J}
-    `:V``}}customElements.define("ev-tesla-card",class extends ct{static styles=dt;static properties={_hass:{state:!0},_config:{state:!0}};setConfig(t){if(!t)throw new Error("Invalid configuration");this._config=t}set hass(t){this._hass=t}_state(t){return this._hass&&t?this._hass.states[t]??null:null}get _batteryLevel(){const t=this._state(this._config?.battery_entity);if(!t)return null;const e=parseFloat(t.state);return isNaN(e)?null:e}get _isCharging(){const t=this._state(this._config?.charging_entity);return t?["on","charging"].includes(t.state?.toLowerCase()):null}get _chargingPower(){const t=this._state(this._config?.charging_power_entity);if(!t)return null;const e=parseFloat(t.state);if(isNaN(e)||0===e)return null;return{value:Number.isInteger(e)?e:Math.round(10*e)/10,unit:t.attributes?.unit_of_measurement??"kW"}}get _chargeLimit(){const t=this._state(this._config?.charge_limit_entity);if(!t)return null;const e=parseFloat(t.state);return isNaN(e)?null:e}get _isHome(){const t=this._state(this._config?.location_entity);return t?"home"===t.state?.toLowerCase():null}get _range(){const t=this._state(this._config?.range_entity);if(!t)return null;const e=parseFloat(t.state);return isNaN(e)?null:{value:Math.round(e),unit:t.attributes?.unit_of_measurement??"km"}}get _odometer(){const t=this._state(this._config?.odometer_entity);if(!t)return null;const e=parseFloat(t.state);return isNaN(e)?null:{value:Math.round(e).toLocaleString(),unit:t.attributes?.unit_of_measurement??"km"}}get _timeRemaining(){const t=this._state(this._config?.time_remaining_entity);if(!t)return null;const e=parseFloat(t.state);if(isNaN(e)||e<=0)return null;const i=(t.attributes?.unit_of_measurement??"").toLowerCase();let s=e;"h"!==i&&"hours"!==i||(s=60*e);const r=Math.floor(s/60),n=Math.round(s%60);return r>0&&n>0?`${r}h ${n}m`:r>0?`${r}h`:`${n}m`}get _imageUrl(){const t=this._config;if(t?.image_url)return t.image_url;const e=this._state(t?.image_entity);if(e?.attributes?.entity_picture){const t=e.attributes.entity_picture;return t.startsWith("/")&&this._hass?.hassUrl?`${this._hass.hassUrl}${t}`:t}return null}render(){const t=(this._config||{}).title??"Tesla",e=this._batteryLevel,i=!0===this._isCharging,s=this._chargingPower,r=this._timeRemaining,n=this._chargeLimit,a=this._isHome,o=this._range,l=this._odometer,c=this._imageUrl,h=null===e?"":e>=60?"tier-high":e>=25?"tier-mid":"tier-low",d=[];return o&&d.push({icon:"mdi:road-variant",label:"Range",value:o.value,unit:o.unit}),i&&null!==n&&d.push({icon:"mdi:battery-charging-high",label:"Charge limit",value:n,unit:"%"}),!i&&l&&d.push({icon:"mdi:counter",label:"Odometer",value:l.value,unit:l.unit}),V`
+
+      <div class="section-title">Tesla Model Picker</div>
+      <ha-selector
+        .hass=${this._hass}
+        .selector=${{select:{options:Object.entries(_TM).map(([k,v])=>({value:k,label:v.l})),mode:"dropdown"}}}
+        .label=${"Model"}
+        .value=${this._tsModel||""}
+        @value-changed=${e=>{this._tsModel=e.detail.value;this._tsWheel=""}}
+      ></ha-selector>
+      <ha-selector
+        .hass=${this._hass}
+        .selector=${{select:{options:_TC.map(c=>({value:c.v,label:c.l})),mode:"dropdown"}}}
+        .label=${"Color"}
+        .value=${this._tsColor||""}
+        @value-changed=${e=>{this._tsColor=e.detail.value}}
+      ></ha-selector>
+      ${this._tsModel?V`
+        <ha-selector
+          .hass=${this._hass}
+          .selector=${{select:{options:_TM[this._tsModel].w.map(w=>({value:w.v,label:w.l})),mode:"dropdown"}}}
+          .label=${"Wheels"}
+          .value=${this._tsWheel||""}
+          @value-changed=${e=>{this._tsWheel=e.detail.value}}
+        ></ha-selector>
+      `:""}
+      <mwc-button
+        raised
+        ?disabled=${!this._tsModel||!this._tsColor||!this._tsWheel}
+        @click=${()=>{const u=this._buildTeslaUrl();if(u)this._set("image_url",u);}}
+      >Apply Tesla image</mwc-button>
+    `:V``}}customElements.define("ev-tesla-card",class extends ct{static styles=dt;static properties={_hass:{state:!0},_config:{state:!0}};_cachedImageUrl=null;setConfig(t){if(!t)throw new Error("Invalid configuration");this._config=t}set hass(t){this._hass=t}_state(t){return this._hass&&t?this._hass.states[t]??null:null}get _batteryLevel(){const t=this._state(this._config?.battery_entity);if(!t)return null;const e=parseFloat(t.state);return isNaN(e)?null:e}get _isCharging(){const t=this._state(this._config?.charging_entity);return t?["on","charging"].includes(t.state?.toLowerCase()):null}get _chargingPower(){const t=this._state(this._config?.charging_power_entity);if(!t)return null;const e=parseFloat(t.state);if(isNaN(e)||0===e)return null;return{value:Number.isInteger(e)?e:Math.round(10*e)/10,unit:t.attributes?.unit_of_measurement??"kW"}}get _chargeLimit(){const t=this._state(this._config?.charge_limit_entity);if(!t)return null;const e=parseFloat(t.state);return isNaN(e)?null:e}get _isHome(){const t=this._state(this._config?.location_entity);return t?"home"===t.state?.toLowerCase():null}get _range(){const t=this._state(this._config?.range_entity);if(!t)return null;const e=parseFloat(t.state);return isNaN(e)?null:{value:Math.round(e),unit:t.attributes?.unit_of_measurement??"km"}}get _odometer(){const t=this._state(this._config?.odometer_entity);if(!t)return null;const e=parseFloat(t.state);return isNaN(e)?null:{value:Math.round(e).toLocaleString(),unit:t.attributes?.unit_of_measurement??"km"}}get _timeRemaining(){const t=this._state(this._config?.time_remaining_entity);if(!t)return null;const e=parseFloat(t.state);if(isNaN(e)||e<=0)return null;const i=(t.attributes?.unit_of_measurement??"").toLowerCase();let s=e;"h"!==i&&"hours"!==i||(s=60*e);const r=Math.floor(s/60),n=Math.round(s%60);return r>0&&n>0?`${r}h ${n}m`:r>0?`${r}h`:`${n}m`}get _imageUrl(){const t=this._config;let u=null;if(t?.image_url)u=t.image_url;else{const e=this._state(t?.image_entity);if(e?.attributes?.entity_picture){const p=e.attributes.entity_picture;u=p.startsWith("/")&&this._hass?.hassUrl?`${this._hass.hassUrl}${p}`:p}}if(u!=null){const nb=u.split("?")[0],ob=(this._cachedImageUrl||"").split("?")[0];if(nb!==ob)this._cachedImageUrl=u}return this._cachedImageUrl||null}render(){const t=(this._config||{}).title??"Tesla",e=this._batteryLevel,i=!0===this._isCharging,s=this._chargingPower,r=this._timeRemaining,n=this._chargeLimit,a=this._isHome,o=this._range,l=this._odometer,c=this._imageUrl,h=null===e?"":e>=60?"tier-high":e>=25?"tier-mid":"tier-low",d=[];return o&&d.push({icon:"mdi:road-variant",label:"Range",value:o.value,unit:o.unit}),i&&null!==n&&d.push({icon:"mdi:battery-charging-high",label:"Charge limit",value:n,unit:"%"}),!i&&l&&d.push({icon:"mdi:counter",label:"Odometer",value:l.value,unit:l.unit}),V`
       <ha-card class="${i?"is-charging":""}">
 
         <!-- header -->
@@ -468,7 +504,7 @@ const w=globalThis,A=t=>t,E=w.trustedTypes,S=E?E.createPolicy("lit-html",{create
 
         <!-- car image -->
         <div class="car-stage">
-          ${c?V`<img class="car-image" src="${c}" alt="${t}">`:V`
+          ${c?V`<img class="car-image" loading="lazy" src="${c}" alt="${t}">`:V`
                 <div class="car-placeholder">
                   <ha-icon icon="mdi:car-electric"></ha-icon>
                 </div>
