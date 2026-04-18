@@ -19,7 +19,7 @@
 
 1. Open HACS in Home Assistant
 2. Go to **Frontend** > **Custom repositories**
-3. Add this repository URL and select **Lovelace** as the category
+3. Add this repository URL and select **Dashboard** as the category
 4. Install **EV Tesla Card**
 5. Add the resource in **Settings > Dashboards > Resources**:
    ```
